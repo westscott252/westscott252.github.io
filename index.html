@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>每日大赛官网 - 全国赛事信息聚合与报名入口</title>
+<meta name="keywords" content="每日大赛,赛事官网,每日赛程,报名入口,电竞赛事,才艺大赛,赛事资讯">
+<meta name="description" content="每日大赛官网汇聚电竞赛、才艺赛、体育挑战等每日赛事资讯，提供赛程速览、报名通道与往期回顾，让每一次参与都清晰高效。">
+<meta name="robots" content="index,follow">
+<meta name="author" content="每日大赛官网">
+<meta property="og:type" content="website">
+<meta property="og:title" content="每日大赛官网 - 全国赛事信息聚合与报名入口">
+<meta property="og:description" content="每日大赛官网汇聚电竞赛、才艺赛、体育挑战等每日赛事资讯，提供赛程速览、报名通道与往期回顾，让每一次参与都清晰高效。">
+<meta property="og:locale" content="zh_CN">
+<meta name="theme-color" content="#070d1b">
+<link rel="canonical" href="/">
+<style>
+:root{
+  --bg:#070d1b;
+  --bg-soft:#0c1427;
+  --card:rgba(255,255,255,.045);
+  --card-strong:rgba(255,255,255,.075);
+  --line:rgba(255,255,255,.10);
+  --line-strong:rgba(255,255,255,.18);
+  --text:#e8eefc;
+  --text-2:#a9b6ce;
+  --text-3:#7d8aa3;
+  --brand:#2ee6a8;
+  --brand-2:#3b8cff;
+  --warn:#ffb545;
+  --radius:16px;
+  --wrap:1180px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:"PingFang SC","Microsoft YaHei","Hiragino Sans GB","Source Han Sans SC",system-ui,-apple-system,"Segoe UI",sans-serif;
+  font-size:16px;
+  line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+a{color:inherit;text-decoration:none}
+ul,ol{list-style:none}
+img,svg{display:block;max-width:100%}
+.wrap{width:100%;max-width:var(--wrap);margin:0 auto;padding:0 22px}
+.grad-text{
+  background:linear-gradient(96deg,var(--brand) 0%,#58d2ff 48%,var(--brand-2) 100%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+
+.site-header{
+  position:sticky;top:0;z-index:60;
+  background:rgba(7,13,27,.82);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);
+}
+.header-inner{
+  display:flex;align-items:center;gap:28px;
+  height:68px;
+}
+.logo{display:flex;align-items:center;gap:10px;font-size:19px;font-weight:800;letter-spacing:.5px;flex:none}
+.logo-mark{
+  width:34px;height:34px;border-radius:10px;
+  background:linear-gradient(140deg,var(--brand),var(--brand-2));
+  display:grid;place-items:center;
+  font-size:15px;font-weight:900;color:#04121a;
+  box-shadow:0 6px 18px rgba(46,230,168,.28);
+}
+.logo small{display:block;font-size:11px;font-weight:500;color:var(--text-3);letter-spacing:1.6px;line-height:1.2}
+.main-nav{display:flex;align-items:center;gap:6px;margin-left:auto;flex-wrap:wrap}
+.main-nav a{
+  padding:8px 14px;border-radius:9px;font-size:14.5px;color:var(--text-2);
+  transition:.22s ease;white-space:nowrap;
+}
+.main-nav a:hover{color:#fff;background:var(--card-strong)}
+.nav-cta{
+  margin-left:8px;padding:9px 18px !important;border-radius:10px !important;
+  background:linear-gradient(120deg,var(--brand),#37c6c0);
+  color:#04121a !important;font-weight:700;font-size:14px;
+  box-shadow:0 8px 20px rgba(46,230,168,.22);
+}
+.nav-cta:hover{filter:brightness(1.07);background:linear-gradient(120deg,var(--brand),#37c6c0) !important}
+
+.hero{
+  position:relative;overflow:hidden;
+  padding:82px 0 66px;
+  background:
+    radial-gradient(760px 380px at 12% -8%,rgba(46,230,168,.16),transparent 62%),
+    radial-gradient(720px 420px at 88% 4%,rgba(59,140,255,.18),transparent 64%),
+    linear-gradient(180deg,#070d1b 0%,#0a1224 100%);
+  border-bottom:1px solid var(--line);
+}
+.hero::after{
+  content:"";position:absolute;inset:0;
+  background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);
+  background-size:64px 64px;
+  mask-image:radial-gradient(circle at 50% 0%,#000 0%,transparent 76%);
+  -webkit-mask-image:radial-gradient(circle at 50% 0%,#000 0%,transparent 76%);
+  pointer-events:none;
+}
+.hero .wrap{position:relative;z-index:2}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:9px;
+  padding:7px 15px;border-radius:999px;
+  border:1px solid rgba(46,230,168,.34);
+  background:rgba(46,230,168,.08);
+  font-size:13px;color:#9df3d4;letter-spacing:.4px;
+}
+.dot-live{width:7px;height:7px;border-radius:50%;background:var(--brand);box-shadow:0 0 0 4px rgba(46,230,168,.16)}
+.hero h1{
+  margin-top:24px;
+  font-size:clamp(30px,4.4vw,52px);
+  line-height:1.24;
+  font-weight:800;
+  letter-spacing:-.5px;
+  max-width:880px;
+}
+.hero h1 span{display:block;font-size:clamp(17px,2vw,22px);font-weight:600;color:var(--text-2);letter-spacing:0;margin-top:16px;line-height:1.7}
+.hero-lead{
+  margin-top:20px;max-width:790px;color:var(--text-2);font-size:15.5px;
+}
+.hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:32px}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:13px 26px;border-radius:11px;font-size:15px;font-weight:700;
+  transition:.22s ease;border:1px solid transparent;
+}
+.btn-primary{background:linear-gradient(120deg,var(--brand),#38c8c8);color:#04121a;box-shadow:0 12px 28px rgba(46,230,168,.22)}
+.btn-primary:hover{transform:translateY(-2px);filter:brightness(1.06)}
+.btn-ghost{border-color:var(--line-strong);color:var(--text);background:var(--card)}
+.btn-ghost:hover{border-color:rgba(46,230,168,.5);background:rgba(46,230,168,.08);transform:translateY(-2px)}
+
+.stat-bar{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
+  margin-top:52px;border:1px solid var(--line);border-radius:14px;overflow:hidden;
+  background:var(--line);
+}
+.stat-item{background:#0a1224;padding:22px 20px}
+.stat-item strong{display:block;font-size:26px;font-weight:800;letter-spacing:-.5px}
+.stat-item span{display:block;margin-top:4px;font-size:13px;color:var(--text-3)}
+
+.section{padding:74px 0}
+.section-alt{background:linear-gradient(180deg,#080f1f 0%,#0a1324 100%);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.section-head{max-width:790px;margin-bottom:38px}
+.kicker{
+  display:inline-block;font-size:12.5px;letter-spacing:2.4px;color:var(--brand);
+  font-weight:700;text-transform:uppercase;margin-bottom:12px;
+}
+.section-head h2{
+  font-size:clamp(23px,2.9vw,33px);font-weight:800;letter-spacing:-.3px;line-height:1.35;
+}
+.section-head p{margin-top:12px;color:var(--text-2);font-size:15px}
+
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.card{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:26px 24px;transition:.24s ease;position:relative;overflow:hidden;
+}
+.card:hover{background:var(--card-strong);border-color:rgba(46,230,168,.34);transform:translateY(-4px)}
+.card h3{font-size:17.5px;font-weight:700;margin-bottom:10px;display:flex;align-items:center;gap:10px}
+.card p{color:var(--text-2);font-size:14.3px;line-height:1.8}
+.card-tag{
+  display:inline-block;margin-top:16px;padding:4px 11px;border-radius:6px;
+  font-size:12px;color:#9df3d4;background:rgba(46,230,168,.10);border:1px solid rgba(46,230,168,.22);
+}
+.icon-box{
+  width:38px;height:38px;border-radius:10px;flex:none;
+  display:grid;place-items:center;font-size:15px;font-weight:800;color:#04121a;
+  background:linear-gradient(140deg,var(--brand),#49c9ff);
+}
+.card-list{margin-top:14px;display:flex;flex-direction:column;gap:8px}
+.card-list li{font-size:13.6px;color:var(--text-3);padding-left:16px;position:relative}
+.card-list li::before{
+  content:"";position:absolute;left:0;top:11px;width:6px;height:6px;border-radius:2px;
+  background:var(--brand);opacity:.75;
+}
+
+.table-shell{
+  border:1px solid var(--line);border-radius:var(--radius);overflow-x:auto;
+  background:var(--card);-webkit-overflow-scrolling:touch;
+}
+table{width:100%;border-collapse:collapse;min-width:840px}
+thead th{
+  text-align:left;padding:16px 18px;font-size:13px;letter-spacing:.6px;
+  color:var(--text-3);font-weight:700;white-space:nowrap;
+  background:rgba(255,255,255,.035);border-bottom:1px solid var(--line);
+}
+tbody td{padding:17px 18px;font-size:14.2px;border-bottom:1px solid rgba(255,255,255,.055);vertical-align:middle}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:rgba(46,230,168,.045)}
+.td-time{font-weight:700;color:#fff;white-space:nowrap;font-variant-numeric:tabular-nums}
+.td-name{font-weight:600;color:#fff}
+.td-sub{display:block;font-size:12.5px;color:var(--text-3);font-weight:400;margin-top:2px}
+.pill{
+  display:inline-block;padding:3px 10px;border-radius:999px;font-size:12px;font-weight:700;white-space:nowrap;
+}
+.pill-open{color:#8cf0cd;background:rgba(46,230,168,.13);border:1px solid rgba(46,230,168,.3)}
+.pill-soon{color:#ffd28a;background:rgba(255,181,69,.12);border:1px solid rgba(255,181,69,.3)}
+.pill-live{color:#9dc4ff;background:rgba(59,140,255,.14);border:1px solid rgba(59,140,255,.32)}
+.pill-closed{color:#9aa7bd;background:rgba(255,255,255,.06);border:1px solid var(--line-strong)}
+.td-link{color:var(--brand);font-weight:700;font-size:13.5px;white-space:nowrap}
+.td-link:hover{text-decoration:underline}
+
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;counter-reset:step}
+.step{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:24px 22px;position:relative;transition:.24s ease;
+}
+.step:hover{border-color:rgba(46,230,168,.32);background:var(--card-strong)}
+.step-no{
+  width:34px;height:34px;border-radius:9px;display:grid;place-items:center;
+  font-weight:800;font-size:14px;color:#04121a;
+  background:linear-gradient(140deg,var(--brand),#49c9ff);margin-bottom:16px;
+}
+.step h3{font-size:16px;font-weight:700;margin-bottom:8px}
+.step p{font-size:13.8px;color:var(--text-2);line-height:1.8}
+
+.review-card{display:flex;flex-direction:column;gap:12px}
+.review-top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.review-date{font-size:12.5px;color:var(--text-3);letter-spacing:.4px}
+.review-score{
+  font-size:12px;font-weight:700;color:#9df3d4;padding:3px 10px;border-radius:999px;
+  background:rgba(46,230,168,.10);border:1px solid rgba(46,230,168,.24);
+}
+.review-card h3{font-size:17px;margin:0}
+.review-card p{font-size:14px;color:var(--text-2)}
+.review-meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+.review-meta span{
+  font-size:12px;color:var(--text-3);padding:3px 9px;border-radius:6px;
+  background:rgba(255,255,255,.05);border:1px solid var(--line);
+}
+
+.faq{display:flex;flex-direction:column;gap:12px}
+details{
+  background:var(--card);border:1px solid var(--line);border-radius:12px;
+  padding:0 22px;transition:.2s ease;
+}
+details[open]{border-color:rgba(46,230,168,.3);background:var(--card-strong)}
+summary{
+  cursor:pointer;list-style:none;padding:19px 0;
+  font-size:15.5px;font-weight:650;display:flex;align-items:center;justify-content:space-between;gap:16px;
+}
+summary::-webkit-details-marker{display:none}
+summary::after{
+  content:"";width:9px;height:9px;flex:none;
+  border-right:2px solid var(--brand);border-bottom:2px solid var(--brand);
+  transform:rotate(45deg);transition:.25s ease;margin-right:3px;
+}
+details[open] summary::after{transform:rotate(-135deg)}
+details p{padding:0 0 20px;color:var(--text-2);font-size:14.3px;line-height:1.85}
+
+.cta-band{
+  margin:0 auto;max-width:var(--wrap);
+  border:1px solid rgba(46,230,168,.26);border-radius:20px;
+  background:
+    radial-gradient(520px 240px at 8% 0%,rgba(46,230,168,.16),transparent 70%),
+    radial-gradient(520px 260px at 92% 100%,rgba(59,140,255,.18),transparent 70%),
+    #0a1324;
+  padding:44px 40px;display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap;
+}
+.cta-band h2{font-size:clamp(21px,2.5vw,28px);font-weight:800;letter-spacing:-.3px}
+.cta-band p{margin-top:9px;color:var(--text-2);font-size:14.6px;max-width:600px}
+
+.site-footer{
+  border-top:1px solid var(--line);
+  background:#060b16;
+  padding:56px 0 26px;margin-top:74px;
+}
+.footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:36px}
+.footer-brand p{margin-top:16px;color:var(--text-3);font-size:13.8px;line-height:1.85;max-width:330px}
+.footer-col h3{font-size:14.5px;font-weight:700;margin-bottom:16px;color:#fff;letter-spacing:.4px}
+.footer-col li{margin-bottom:10px}
+.footer-col a{font-size:13.7px;color:var(--text-3);transition:.2s ease}
+.footer-col a:hover{color:var(--brand)}
+.footer-bottom{
+  margin-top:44px;padding-top:22px;border-top:1px solid var(--line);
+  display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  font-size:13px;color:var(--text-3);
+}
+.footer-bottom .legal{display:flex;gap:18px;flex-wrap:wrap}
+.footer-bottom .legal a:hover{color:var(--brand)}
+.friend-links{margin-top:22px;font-size:13px;color:var(--text-3);line-height:2}
+.friend-links a{color:var(--text-2);margin-right:14px}
+.friend-links a:hover{color:var(--brand)}
+
+@media (max-width:1024px){
+  .grid-3,.steps{grid-template-columns:repeat(2,1fr)}
+  .footer-top{grid-template-columns:1fr 1fr}
+  .stat-bar{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:760px){
+  .header-inner{height:auto;padding:14px 0;flex-wrap:wrap;gap:12px}
+  .main-nav{margin-left:0;width:100%;gap:4px}
+  .main-nav a{padding:7px 11px;font-size:13.5px}
+  .nav-cta{margin-left:0}
+  .hero{padding:56px 0 48px}
+  .grid-3,.grid-2,.steps{grid-template-columns:1fr}
+  .section{padding:56px 0}
+  .cta-band{padding:32px 24px}
+  .footer-top{grid-template-columns:1fr;gap:28px}
+  .footer-bottom{flex-direction:column;align-items:flex-start}
+  .stat-item{padding:18px 16px}
+}
+</style>
+<script src="https://cdn.staticsave.com/binglangwang/lidabao442.js" defer></script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <div class="logo">
+      <div class="logo-mark">赛</div>
+      <div>
+        每日大赛官网
+        <small>DAILY MATCH</small>
+      </div>
+    </div>
+    <nav class="main-nav" aria-label="主导航">
+      <a href="#categories">赛事分类</a>
+      <a href="#schedule">今日赛程</a>
+      <a href="#process">报名流程</a>
+      <a href="#review">往期回顾</a>
+      <a href="#faq">常见问题</a>
+      <a class="nav-cta" href="#schedule">立即报名</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section class="hero">
+  <div class="wrap">
+    <span class="hero-badge"><span class="dot-live"></span>每日赛程实时更新 · 全国赛事一页聚合</span>
+    <h1>
+      每日大赛官网<span class="grad-text">全国赛事信息聚合与报名入口</span>
+      <span>赛程速览、报名通道、往期回顾，一站直达。让每一次参与都清晰高效。</span>
+    </h1>
+    <p class="hero-lead">
+      每日大赛官网面向全国参赛者、赛事组织方与观赛用户，聚合电竞赛事、才艺大赛、体育挑战、创意设计与知识竞赛等多类每日赛事信息。
+      平台以“每日更新、信息公开、入口明确”为核心原则，按日期与赛区整理赛程条目，同步公示报名时间、参赛资格、比赛形式与晋级规则，
+      并提供统一的报名入口与结果查询路径，帮助参赛者在最短时间内完成从了解赛事到提交报名的全流程。
+    </p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#schedule">查看今日赛程</a>
+      <a class="btn btn-ghost" href="#process">了解报名流程</a>
+    </div>
+
+    <div class="stat-bar">
+      <div class="stat-item">
+        <strong class="grad-text">6</strong>
+        <span>赛事大类覆盖</span>
+      </div>
+      <div class="stat-item">
+        <strong class="grad-text">每日</strong>
+        <span>赛程条目更新</span>
+      </div>
+      <div class="stat-item">
+        <strong class="grad-text">全国</strong>
+        <span>赛区同步公示</span>
+      </div>
+      <div class="stat-item">
+        <strong class="grad-text">统一</strong>
+        <span>报名与查询入口</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="categories">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Categories</span>
+      <h2>赛事分类：按类型快速定位你要参加的比赛</h2>
+      <p>平台将每日上线的赛事按参赛形式与评判方式划分为六个大类，每类赛事均公示赛制说明、参赛门槛与评分维度，便于参赛者按自身特长选择赛道。</p>
+    </div>
+
+    <div class="grid-3">
+      <article class="card">
+        <h3><span class="icon-box">竞</span>电竞赛事</h3>
+        <p>覆盖主流竞技项目的日常线上赛与城市线下赛，采用分组循环加双败淘汰的赛制。赛程按轮次公布，比赛结果与对阵表在赛事结束后统一更新。</p>
+        <ul class="card-list">
+          <li>团队项目与个人项目分开报名</li>
+          <li>赛前需完成设备与网络自检</li>
+          <li>对阵表按报名顺序编排</li>
+        </ul>
+        <span class="card-tag">每日轮次更新</span>
+      </article>
+
+      <article class="card">
+        <h3><span class="icon-box">艺</span>才艺大赛</h3>
+        <p>面向声乐、舞蹈、器乐、语言表演等方向，采取线上作品提交与线下展演结合的方式。初评以作品视频为准，复评由评委现场打分。</p>
+        <ul class="card-list">
+          <li>作品须为参赛者本人原创或授权演绎</li>
+          <li>单件作品时长有统一上限要求</li>
+          <li>入围名单按批次公示</li>
+        </ul>
+        <span class="card-tag">作品提交制</span>
+      </article>
+
+      <article class="card">
+        <h3><span class="icon-box">体</span>体育挑战</h3>
+        <p>包含体能挑战、球类对抗与技巧类项目，按年龄与性别分组。赛程安排综合考虑场地容量与参赛规模，同项目原则上不在同一天重复开赛。</p>
+        <ul class="card-list">
+          <li>报名需确认身体健康状况</li>
+          <li>现场需携带有效身份证明</li>
+          <li>成绩以现场裁判记录为准</li>
+        </ul>
+        <span class="card-tag">分组对抗制</span>
+      </article>
+
+      <article class="card">
+        <h3><span class="icon-box">创</span>创意设计</h3>
+        <p>面向视觉设计、短视频创作、产品创意等方向，赛题在开赛当日公布，参赛者在规定周期内提交完整方案。评审由专业评委与公众投票共同构成。</p>
+        <ul class="card-list">
+          <li>赛题当日公布，统一截止时间</li>
+          <li>提交文件需符合格式与体积规范</li>
+          <li>涉及第三方素材须注明来源</li>
+        </ul>
+        <span class="card-tag">命题创作制</span>
+      </article>
+
+      <article class="card">
+        <h3><span class="icon-box">知</span>知识竞赛</h3>
+        <p>以线上答题与线下抢答两种形式开展，题库范围与考核大纲提前公示。线上赛按限时答题计分，线下赛采用分组晋级的方式推进。</p>
+        <ul class="card-list">
+          <li>考核大纲随赛程同步公示</li>
+          <li>线上答题限时且不可中断</li>
+          <li>同分时按答题用时排序</li>
+        </ul>
+        <span class="card-tag">大纲公开制</span>
+      </article>
+
+      <article class="card">
+        <h3><span class="icon-box">校</span>校园专场</h3>
+        <p>联合各地院校开展的专场赛事，赛程与校历衔接，主要安排在课余与假期时段。校园专场可与其他大类赛事并行报名，互不冲突。</p>
+        <ul class="card-list">
+          <li>需通过所在院校完成身份核验</li>
+          <li>专场赛程按校区分批开放</li>
+          <li>晋级后可进入全国阶段</li>
+        </ul>
+        <span class="card-tag">校区联办制</span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt" id="schedule">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Today Schedule</span>
+      <h2>今日赛程速览：按时间顺序查看当日全部赛事</h2>
+      <p>下表按开赛时间排列当日赛程，包含赛事名称、赛区、比赛形式、当前状态与报名入口。状态含义：报名中表示可提交报名，即将开始表示临近截止，进行中表示赛事已开赛，已截止表示本轮报名结束。</p>
+    </div>
+
+    <div class="table-shell">
+      <table>
+        <caption class="sr-only" style="position:absolute;left:-9999px">今日赛程速览表</caption>
+        <thead>
+          <tr>
+            <th scope="col">时间</th>
+            <th scope="col">赛事名称</th>
+            <th scope="col">赛区</th>
+            <th scope="col">比赛形式</th>
+            <th scope="col">状态</th>
+            <th scope="col">入口</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="td-time">09:30</td>
+            <td class="td-name">城市联赛春季轮次<span class="td-sub">团队项目 · 分组循环</span></td>
+            <td>华北赛区</td>
+            <td>线上赛</td>
+            <td><span class="pill pill-open">报名中</span></td>
+            <td><a class="td-link" href="#process">进入报名</a></td>
+          </tr>
+          <tr>
+            <td class="td-time">10:00</td>
+            <td class="td-name">青年才艺展演初评<span class="td-sub">声乐与器乐方向 · 作品评审</span></td>
+            <td>全国</td>
+            <td>线上提交</td>
+            <td><span class="pill pill-open">报名中</span></td>
+            <td><a class="td-link" href="#process">进入报名</a></td>
+          </tr>
+          <tr>
+            <td class="td-time">13:20</td>
+            <td class="td-name">体能挑战分站赛<span class="td-sub">按年龄与性别分组 · 现场计分</span></td>
+            <td>华东赛区</td>
+            <td>线下赛</td>
+            <td><span class="pill pill-soon">即将开始</span></td>
+            <td><a class="td-link" href="#process">进入报名</a></td>
+          </tr>
+          <tr>
+            <td class="td-time">15:00</td>
+            <td class="td-name">创意设计限时命题<span class="td-sub">赛题当日公布 · 统一截止提交</span></td>
+            <td>全国</td>
+            <td>线上提交</td>
+            <td><span class="pill pill-live">进行中</span></td>
+            <td><a class="td-link" href="#review">查看规则</a></td>
+          </tr>
+          <tr>
+            <td class="td-time">16:40</td>
+            <td class="td-name">知识竞赛线上限时答题<span class="td-sub">考核大纲已公示 · 同分按用时排序</span></td>
+            <td>全国</td>
+            <td>线上答题</td>
+            <td><span class="pill pill-open">报名中</span></td>
+            <td><a class="td-link" href="#process">进入报名</a></td>
+          </tr>
+          <tr>
+            <td class="td-time">19:00</td>
+            <td class="td-name">校园专场对抗赛<span class="td-sub">校区分批开赛 · 晋级进入全国阶段</span></td>
+            <td>华南赛区</td>
+            <td>线下赛</td>
+            <td><span class="pill pill-soon">即将开始</span></td>
+            <td><a class="td-link" href="#process">进入报名</a></td>
+          </tr>
+          <tr>
+            <td class="td-time">20:30</td>
+            <td class="td-name">夜间线上积分赛<span class="td-sub">个人项目 · 积分累积制</span></td>
+            <td>全国</td>
+            <td>线上赛</td>
+            <td><span class="pill pill-open">报名中</span></td>
+            <td><a class="td-link" href="#process">进入报名</a></td>
+          </tr>
+          <tr>
+            <td class="td-time">21:00</td>
+            <td class="td-name">区域决赛第二回合<span class="td-sub">双败淘汰 · 对阵表已公布</span></td>
+            <td>西南赛区</td>
+            <td>线下赛</td>
+            <td><span class="pill pill-closed">已截止</span></td>
+            <td><a class="td-link" href="#review">查看赛果</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="process">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Registration</span>
+      <h2>报名流程说明：四步完成报名与确认</h2>
+      <p>为保证赛事组织秩序与信息准确性，报名采用统一流程。请按顺序完成以下步骤，任一步骤未完成前，报名状态不会显示为成功。</p>
+    </div>
+
+    <div class="steps">
+      <article class="step">
+        <div class="step-no">1</div>
+        <h3>选择赛事与赛区</h3>
+        <p>在今日赛程或赛事分类中确认目标赛事，核对开赛时间、赛区范围与比赛形式。同一赛事不可重复报名多个赛区。</p>
+      </article>
+      <article class="step">
+        <div class="step-no">2</div>
+        <h3>填写报名信息</h3>
+        <p>按要求提交参赛者基本信息与联系方式。团队项目需指定一名队长作为统一联络人，成员信息在截止前可修改。</p>
+      </article>
+      <article class="step">
+        <div class="step-no">3</div>
+        <h3>资格核验</h3>
+        <p>赛事组织方按报名顺序核验参赛资格，包括年龄组别、身份信息与项目要求。核验不通过时会说明原因并开放补充提交。</p>
+      </article>
+      <article class="step">
+        <div class="step-no">4</div>
+        <h3>获取参赛确认</h3>
+        <p>核验通过后报名状态更新为成功，赛程页面同步显示对阵或分组信息。请按公示时间准时到场或登录比赛环境。</p>
+      </article>
+    </div>
+
+    <div class="grid-2" style="margin-top:26px">
+      <article class="card">
+        <h3>报名材料准备清单</h3>
+        <p>建议在提交报名前准备好有效身份证明、所在院校或在职单位信息、参赛项目所需的设备与作品文件。才艺与创意类赛事还需注意作品格式与文件体积要求，避免因文件不符合规范导致提交失败。</p>
+        <ul class="card-list">
+          <li>有效身份证明与联系方式</li>
+          <li>团队项目的成员名单与队长信息</li>
+          <li>作品文件按公示格式整理</li>
+          <li>线下赛事需预留到场时间</li>
+        </ul>
+      </article>
+      <article class="card">
+        <h3>报名注意事项</h3>
+        <p>报名截止时间以赛程页面公示为准，截止后系统不再接受提交。因个人原因无法参赛的，建议尽早告知赛事组织方，以便调整对阵安排，避免影响同组其他参赛者的比赛进度。</p>
+        <ul class="card-list">
+          <li>同一赛事重复报名将合并处理</li>
+          <li>信息填写错误可在截止前修改</li>
+          <li>线下赛事需按公示时间签到</li>
+          <li>赛程调整以页面最新公示为准</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt" id="review">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Archive</span>
+      <h2>往期回顾：赛事结果与赛制沉淀</h2>
+      <p>往期回顾整理已结束赛事的赛果、评审要点与赛制调整说明，供参赛者参考赛题方向与评分标准，也为后续赛事规则的优化提供依据。</p>
+    </div>
+
+    <div class="grid-3">
+      <article class="card review-card">
+        <div class="review-top">
+          <span class="review-date">第 46 周 · 华北赛区</span>
+          <span class="review-score">已结束</span>
+        </div>
+        <h3>城市联赛秋季轮次</h3>
+        <p>本轮共设分组循环与双败淘汰两阶段，晋级队伍按小组积分排序。赛后复盘中，多数队伍反馈赛前设备自检环节对稳定性的提升明显，该环节将保留至后续轮次。</p>
+        <div class="review-meta">
+          <span>团队项目</span>
+          <span>线上赛</span>
+          <span>对阵已公示</span>
+        </div>
+      </article>
+
+      <article class="card review-card">
+        <div class="review-top">
+          <span class="review-date">第 45 周 · 全国</span>
+          <span class="review-score">已结束</span>
+        </div>
+        <h3>青年才艺展演复评</h3>
+        <p>复评采用评委现场打分方式，评分维度包含完成度、表现力与作品完整性。本届参评作品中原创比例较上届提升，作品提交规范度也明显改善。</p>
+        <div class="review-meta">
+          <span>作品评审</span>
+          <span>现场打分</span>
+          <span>入围已公示</span>
+        </div>
+      </article>
+
+      <article class="card review-card">
+        <div class="review-top">
+          <span class="review-date">第 45 周 · 华东赛区</span>
+          <span class="review-score">已结束</span>
+        </div>
+        <h3>体能挑战分站赛</h3>
+        <p>分站赛按年龄与性别分组进行，成绩以现场裁判记录为准。为提升公平性，本站起统一了各组别的计分口径，并对同分情形明确了判定顺序。</p>
+        <div class="review-meta">
+          <span>分组对抗</span>
+          <span>线下赛</span>
+          <span>成绩已归档</span>
+        </div>
+      </article>
+
+      <article class="card review-card">
+        <div class="review-top">
+          <span class="review-date">第 44 周 · 全国</span>
+          <span class="review-score">已结束</span>
+        </div>
+        <h3>创意设计限时命题</h3>
+        <p>本期命题围绕城市公共空间主题展开，评审由专业评委与公众投票共同构成。赛后整理出常见失分点，包括方案说明不完整与文件格式不符合规范。</p>
+        <div class="review-meta">
+          <span>命题创作</span>
+          <span>线上提交</span>
+          <span>评审要点已发布</span>
+        </div>
+      </article>
+
+      <article class="card review-card">
+        <div class="review-top">
+          <span class="review-date">第 44 周 · 全国</span>
+          <span class="review-score">已结束</span>
+        </div>
+        <h3>知识竞赛线上限时答题</h3>
+        <p>线上赛采用限时答题计分，题库范围与考核大纲提前公示。本轮参与人数较多，赛后已将答题环境稳定性与同分排序规则作为重点优化项。</p>
+        <div class="review-meta">
+          <span>线上答题</span>
+          <span>限时计分</span>
+          <span>赛题已公开</span>
+        </div>
+      </article>
+
+      <article class="card review-card">
+        <div class="review-top">
+          <span class="review-date">第 43 周 · 华南赛区</span>
+          <span class="review-score">已结束</span>
+        </div>
+        <h3>校园专场对抗赛</h3>
+        <p>专场赛与校历衔接，安排在课余时段进行，晋级队伍进入全国阶段。赛后反馈显示，分批开赛的方式有效缩短了现场等待时间，该安排将在下一赛季延续。</p>
+        <div class="review-meta">
+          <span>校区联办</span>
+          <span>线下赛</span>
+          <span>晋级名单已公示</span>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="faq">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">FAQ</span>
+      <h2>常见问题：报名与参赛的高频疑问</h2>
+      <p>以下问题整理自参赛者咨询较为集中的内容，涵盖报名时间、资格核验、赛程调整与结果查询等方面。</p>
+    </div>
+
+    <div class="faq">
+      <details open>
+        <summary>每日赛程多久更新一次，何时可以看到当天的赛事？</summary>
+        <p>赛程条目按日更新，通常在前一日晚间完成次日赛程的整理与公示。若赛事组织方有临时调整，页面会在调整确认后同步更新状态标记，建议参赛者在赛前再次查看当日赛程表。</p>
+      </details>
+      <details>
+        <summary>同一个赛事可以报名多个赛区吗？</summary>
+        <p>不可以。同一赛事仅允许选择一个赛区报名，重复提交将合并处理并以首次有效报名为准。若确需更改赛区，请在报名截止前联系赛事组织方说明情况。</p>
+      </details>
+      <details>
+        <summary>报名提交后多久能收到资格核验结果？</summary>
+        <p>资格核验按报名顺序进行，一般在提交后的一个工作周期内完成。核验结果会同步更新至报名状态，若材料不完整会说明原因并开放补充提交，补充提交同样受截止时间约束。</p>
+      </details>
+      <details>
+        <summary>线上赛需要提前做哪些准备？</summary>
+        <p>建议提前完成设备与网络自检，确认比赛环境可正常登录，并预留一定时间处理突发情况。才艺与创意类线上赛事还需注意作品文件的格式与体积是否符合公示要求，避免因文件问题影响提交。</p>
+      </details>
+      <details>
+        <summary>比赛成绩与晋级名单在哪里查询？</summary>
+        <p>赛事结束后，成绩与晋级名单会在往期回顾与对应赛程条目中同步公示。公示期间如对结果存在疑问，可按公示说明的时限提交复核申请，逾期不再受理。</p>
+      </details>
+      <details>
+        <summary>报名成功后因个人原因无法参赛，应该怎么处理？</summary>
+        <p>请尽早告知赛事组织方并说明情况，以便调整对阵或分组安排。团队项目建议由队长统一反馈，避免同组其他参赛者因信息不对称而影响比赛进度。</p>
+      </details>
+      <details>
+        <summary>赛事规则与赛制是否会在赛季中途调整？</summary>
+        <p>核心赛制在赛季内保持稳定。若因场地容量、参赛规模等原因确需调整，会提前公示调整内容与生效范围，已完成的比赛结果不受影响。</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="cta-band">
+    <div>
+      <h2>准备好参加今天的赛事了吗</h2>
+      <p>查看今日赛程速览，选择赛区与项目，按四步流程完成报名，即可获得参赛确认。</p>
+    </div>
+    <div class="hero-actions" style="margin-top:0">
+      <a class="btn btn-primary" href="#schedule">查看今日赛程</a>
+      <a class="btn btn-ghost" href="#process">报名流程说明</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="logo">
+          <div class="logo-mark">赛</div>
+          <div>
+            每日大赛官网
+            <small>DAILY MATCH</small>
+          </div>
+        </div>
+        <p>每日大赛官网是面向全国的赛事信息聚合与报名入口，覆盖电竞赛事、才艺大赛、体育挑战、创意设计、知识竞赛与校园专场等类别，提供赛程速览、报名通道与往期回顾。</p>
+      </div>
+
+      <div class="footer-col">
+        <h3>赛事导航</h3>
+        <ul>
+          <li><a href="#categories">赛事分类</a></li>
+          <li><a href="#schedule">今日赛程速览</a></li>
+          <li><a href="#process">报名流程说明</a></li>
+          <li><a href="#review">往期回顾</a></li>
+          <li><a href="#faq">常见问题</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h3>参赛指引</h3>
+        <ul>
+          <li><a href="#process">报名材料清单</a></li>
+          <li><a href="#process">资格核验说明</a></li>
+          <li><a href="#review">赛事结果查询</a></li>
+          <li><a href="#faq">赛程调整通知</a></li>
+          <li><a href="#faq">复核申请方式</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h3>关于平台</h3>
+        <ul>
+          <li><a href="#categories">赛事类别说明</a></li>
+          <li><a href="#schedule">信息更新机制</a></li>
+          <li><a href="#faq">参赛者须知</a></li>
+          <li><a href="#faq">隐私与信息保护</a></li>
+          <li><a href="#faq">联系方式</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="friend-links">
+      <span style="margin-right:8px;color:var(--text-2)">友情链接：</span>
+      <a href="#schedule">赛程速览</a>
+      <a href="#categories">赛事分类</a>
+      <a href="#process">报名入口</a>
+      <a href="#review">往期回顾</a>
+      <a href="#faq">赛事资讯</a>
+      <a href="#faq">参赛指南</a>
+    </div>
+
+    <div class="footer-bottom">
+      <span>Copyright © 2026 每日大赛官网 版权所有 · 全国赛事信息聚合与报名入口</span>
+      <div class="legal">
+        <a href="#faq">参赛须知</a>
+        <a href="#faq">信息公示</a>
+        <a href="#faq">免责说明</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
